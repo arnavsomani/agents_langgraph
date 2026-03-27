@@ -27,8 +27,9 @@ response = chain.invoke({"topic": "nature"})
 
 print(type(response))
 
-
+#########################################
 # JsonOutputParser example
+#########################################
 from langchain_core.output_parsers import JsonOutputParser
 
 parser = JsonOutputParser()
@@ -42,7 +43,9 @@ chain = prompt | llm | parser
 result = chain.invoke({"description": "A 25-year-old developer named Alex"})
 print(result)  # {'name': 'Alex', 'age': 25}
 
+#########################################
 # PydanticOutputParser example
+#########################################
 from langchain_core.output_parsers import PydanticOutputParser
 from pydantic import BaseModel, Field
 
@@ -62,8 +65,9 @@ chain = prompt | llm | parser
 result = chain.invoke({"description": "A 30-year-old artist named Maria"})
 print(result)  # Person(name='Maria', age=30, occupation='artist')
 
-
+#########################################
 # Structured Output
+#########################################
 class MovieReview(BaseModel):
     title: str = Field(description="The title of the movie")
     review: str = Field(description="A brief review of the movie")

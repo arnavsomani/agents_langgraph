@@ -3,6 +3,8 @@ Section 1 Project: Smart Q&A Bot
 A production-ready question-answering bot with structured output
 """
 
+# user question -> chatprompttemplete -> chatopenai -> with structured ouput -> QA response
+
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
