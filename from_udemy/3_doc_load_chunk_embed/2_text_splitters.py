@@ -108,7 +108,7 @@ def chunk_size_comparison():
         splitter = RecursiveCharacterTextSplitter(
             chunk_size=size, chunk_overlap=size // 5
         )  # 20% overlap
-        chunks = splitter.split_text(SAMPLE_TEXT)
+        chunks = splitter.split_text(  )
         print(f" Size {size}: {len(chunks)} chunks")
 
 
@@ -131,7 +131,6 @@ def overlap_importance():
     print("\nWith overlap:")
     print(f"  Chunk 1 end: ...{chunks_with_overlap[0][-20:]}")
     print(f"  Chunk 2 start: {chunks_with_overlap[1][:20]}...")
-
 
 def markdown_splitter():
     headers_to_consider = [

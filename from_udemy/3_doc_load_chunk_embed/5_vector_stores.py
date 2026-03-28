@@ -150,6 +150,9 @@ def as_retriever():
             )
 
 
+#  SQLite plugin : -> cmd + P -> sqlite
+
+
 def persist_chroma():
     persist_dir = "./chroma_db/"
 
