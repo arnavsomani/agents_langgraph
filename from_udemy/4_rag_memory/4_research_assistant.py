@@ -25,9 +25,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 import json
 
-
 load_dotenv()
-
 
 # ============================================================
 # Data Models

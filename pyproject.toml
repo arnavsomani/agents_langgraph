@@ -11,4 +11,5 @@ dependencies = [
     "langchain-openai>=1.1.12",
     "pypdf>=6.9.2",
     "python-dotenv>=1.2.2",
+    "rank-bm25>=0.2.2",
 ]
