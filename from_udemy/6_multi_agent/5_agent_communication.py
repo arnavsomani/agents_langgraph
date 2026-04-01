@@ -171,40 +171,7 @@ def create_shared_fields_pipeline():
 
         return {"raw_data": data}
 
-    def analyst(state: SharedFieldsState) -> dict:
-        """Reads raw_data field, writes analysis and confidence."""
-        data_summary = json.dumps(state["raw_data"], indent=2)
-
-        response = llm.invoke(
-            [
-                SystemMessage(
-                    content=(
-                        "You are a data analyst. Analyze the collected data and provide: "
-                        "1) A brief analysis (2-3 sentences), and "
-                        "2) A confidence score from 0.0 to 1.0. "
-                        "Format: ANALYSIS: <text>\nCONFIDENCE: <number>"
-                    )
-                ),
-                HumanMessage(
-                    content=f"Query: {state['query']}\n\nData:\n{data_summary}"
-                ),
-            ]
-        )
-
-        content = response.content
-        analysis = content
-        confidence = 0.7  # default
-
-        if "CONFIDENCE:" in content:
-            parts = content.split("CONFIDENCE:")
-            analysis = parts[0].replace("ANALYSIS:", "").strip()
-            try:
-                confidence = float(parts[1].strip())
-            except ValueError:
-                confidence = 0.7
-
-        return {"analysis": analysis, "confidence_score": confidence}
-
+ 
     def advisor(state: SharedFieldsState) -> dict:
         """Reads analysis + confidence, writes recommendations."""
         response = llm.invoke(
